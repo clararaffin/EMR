@@ -13,10 +13,10 @@ Existen dos tipos de tarjeta:
 TarjetaComun: Paga el boleto a 5.75 y el transbordo a 1.90
 TarjetaMedioBoleto: Paga el boleto a 2.90 y el transbordo a 0,96
 """
-from datetime import datetime, timedelta, time
+"""from datetime import datetime, timedelta, time
 now = datetime.now()
-
-class Bondi:
+"""
+class Colectivo:
   #datos del bondi
 	def __init__(self,empresa,linea,interno):
 		self.empresa=empresa
@@ -29,8 +29,9 @@ class Card:
 		self.busprev=0
 		self.horabusprev=0
 		self.flagbondiprev=False
+		self.ultimosviajes = Viajes()
 		
-		def Boleto(self,colectivo,hora):
+		def boleto(self,colectivo,hora):
 		  #normal 5.75
 		  #transbordo 1.90
 		  if self.saldo >= 1.9:
@@ -55,7 +56,7 @@ class Card:
 class Medio(Card):
   #normal 2.90
   #transbordo 0.96
-  def Boleto(self,colectivo,hora):
+  def medioBoleto(self,colectivo,hora):
 	  if self.saldo >= 0.96:
 		self.saldo=self.saldo-0.96
 		self.busprev=0
@@ -70,4 +71,17 @@ class Medio(Card):
   
 class Viajes:
   #datos del viaje
+	def __init__ (self):
+		self.hora=0
+		self.monto=0
+		self.empresa=""
+		self.linea=0
+		self.interno=0
+		
+	def viajecito(self,colectivo,hora,monto):
+		self.hora=hora
+		self.monto=monto
+		self.empresa=colectivo.empresa
+		self.linea=colectivo.linea
+		self.interno=colectivo.interno
 
