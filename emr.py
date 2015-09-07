@@ -31,27 +31,36 @@ class Card:
 		self.flagbondiprev=False
 		self.ultimosviajes = Viajes()
 		
-		def boleto(self,colectivo,hora):
-		  #normal 5.75
-		  #transbordo 1.90
-		  if self.saldo >= 1.9:
+	def boleto(self,colectivo,hora):
+		#normal 5.75
+		#transbordo 1.90
+		if self.saldo >= 1.9:
 		  	self.saldo=self.saldo-1.9
 		  	self.busprev=0
 		  	self.horabusprev=0
 		  	self.flagbondiprev=False
 		  	return True
-		  if self.saldo >=5.75:
+		if self.saldo >=5.75:
 		  	self.saldo=self.saldo-5.75
 		  	self.busprev=colectivo.linea
 		  	self.horabusprev=self.hora
 		  	return True
-		  else:
+		else:
 		  	return False
-		  	
-		
-		#recargar
-		#historial
-		#saldo
+	
+	#recargar
+	def cargar(self,monto):
+		self.monto=monto
+		if self.monto==196:
+			self.saldo=self.saldo+230
+		elif self.monto==368:
+			self.saldo=self.saldo+460
+		else:
+			self.saldo=self.saldo+self.monto
+	#historial
+	#saldo
+	def saldo(self):
+		return self.saldo
 
 class Medio(Card):
   #normal 2.90
