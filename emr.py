@@ -13,9 +13,7 @@ Existen dos tipos de tarjeta:
 TarjetaComun: Paga el boleto a 5.75 y el transbordo a 1.90
 TarjetaMedioBoleto: Paga el boleto a 2.90 y el transbordo a 0,96
 """
-"""from datetime import datetime, timedelta, time
-now = datetime.now()
-"""
+
 class Colectivo:
   #datos del bondi
 	def __init__(self,empresa,linea,interno):
