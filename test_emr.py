@@ -1,4 +1,5 @@
 from emr import *
+
 N142=Colectivo("Rosario Bus",142,3)
 N116=Colectivo("Semtur",116,1)
 Tarjeta=Card()
