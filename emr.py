@@ -27,7 +27,7 @@ class Card:
 			  	self.horabusprev=0
 			  	self.flagbondiprev=False
 			  	self.ultimosviajes.viajecito(colectivo,self.hora,1.9)
-			  	self.hitorial.append(self.ultimosviajes)
+			  	self.historial.append(self.ultimosviajes)
 			  	self.ultimosviajes= Viajes()
 			  	return True
 		else:	  	
@@ -38,7 +38,7 @@ class Card:
 			  	self.busprev=colectivo.linea
 			  	self.horabusprev=self.hora
 			  	self.ultimosviajes.viajecito(colectivo,self.hora,5.75)
-			  	self.hitorial.append(self.ultimosviajes)
+			  	self.historial.append(self.ultimosviajes)
 			  	self.ultimosviajes= Viajes()
 			  	return True
 			else:
@@ -75,7 +75,7 @@ class Medio(Card):
 			self.horabusprev=0
 			self.flagbondiprev=False
 			self.ultimosviajes.viajecito(colectivo,self.hora,0.96)
-			self.hitorial.append(self.ultimosviajes)
+			self.historial.append(self.ultimosviajes)
 			self.ultimosviajes= Viajes()
 			return True
 		else:
@@ -84,7 +84,7 @@ class Medio(Card):
 			self.busprev=colectivo.linea
 			self.horabusprev=self.hora
 			self.ultimosviajes.viajecito(colectivo,self.hora,2.9)
-			self.hitorial.append(self.ultimosviajes)
+			self.historial.append(self.ultimosviajes)
 			self.ultimosviajes= Viajes()
 			return True
   	else:
