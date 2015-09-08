@@ -32,19 +32,17 @@ class Card:
 			  	return True
 		else:	  	
 			if self.saldo >=5.75:
-			  	self.saldo=self.saldo-5.75
-				
+				self.saldo=self.saldo-5.75
 				if (self.flagbondiprev == False):
 					self.flagbondiprev = True
-			  	
-			  	self.busprev=colectivo.linea
-			  	self.horabusprev=self.hora
-			  	self.ultimosviajes.viajecito(colectivo,self.hora,5.75)
-			  	self.historial.append(self.ultimosviajes)
-			  	self.ultimosviajes= Viajes()
-			  	return True
+				self.busprev=colectivo.linea
+				self.horabusprev=self.hora
+				self.ultimosviajes.viajecito(colectivo,self.hora,5.75)
+				self.historial.append(self.ultimosviajes)
+				self.ultimosviajes= Viajes()
+				return True
 			else:
-			  	return False
+				return False
 		
 	#recargar
 	def cargar(self,monto):
