@@ -21,7 +21,7 @@ class Card:
 		#transbordo 1.90
 		self.flagbondiprev=False
 		self.hora=datetime.strptime (hora, "%d/%m/%Y %H:%M")
-		if self.busprev!=colectivo.linea and self.flagbondiprev==True and self.hora-self.horabusprev < timedelta(hour=1):
+		if self.busprev!=colectivo.linea and self.flagbondiprev==True and self.hora-self.horabusprev < timedelta(minute=60):
 			if self.saldo >= 1.9:
 			  	self.saldo=self.saldo-1.9
 			  	self.busprev=0
