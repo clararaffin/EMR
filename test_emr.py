@@ -4,12 +4,12 @@ N142=Colectivo("Rosario Bus",142,3)
 N116=Colectivo("Semtur",116,1)
 Tarjeta=Card()
 Medio=Medio()
-def test1():
+def test_cargar():
   Tarjeta.cargar(196)
   assert (Tarjeta.getSaldo() == 230)
   Medio.cargar(368)
   assert (Medio.getSaldo() == 460)
-def test2():
+def test_boleto():
   Tarjeta.boleto(N142,"08/09/2015 00:45")
   Tarjeta.boleto(N116,"08/09/2015 00:55")
   assert Tarjeta.getSaldo() == 222.35
