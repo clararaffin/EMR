@@ -6,8 +6,8 @@ Medio=Medio()
 def test1():
   Tarjeta.cargar(196)
   assert Tarjeta.saldo() == 230
-	Medio.cargar(368)
-	assert Medio.cargar() == 460
+  Medio.cargar(368)
+  assert Medio.cargar() == 460
 def test2():
   Tarjeta.boleto(N142,"08/09/2015 00:45")
   Tarjeta.boleto(N116,"08/09/2015 00:55")
