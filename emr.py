@@ -58,7 +58,7 @@ class Card:
 		for historial in self.historial:
 			print(str(historial.linea)+"/t"+str(historial.empresa)+"/t"+str(historial.interno)+"/t"+str(historial.hora)+"/t"+str(historial.monto))
 	#saldo
-	def saldo(self):
+	def getSaldo(self):
 		return self.saldo
 
 class Medio(Card):
