@@ -35,7 +35,7 @@ class Card:
 		#normal 5.75
 		#transbordo 1.90
 		self.flagbondiprev=False
-		self.hora=hora
+		self.hora=datetime.strptime (hora, "%d/%m/%Y %H:%M")
 		if self.busprev!=colectivo.linea and self.flagbondiprev==True and self.hora-self.horabusprev < timedelta(hour=1):
 			if self.saldo >= 1.9:
 			  	self.saldo=self.saldo-1.9
@@ -82,7 +82,7 @@ class Medio(Card):
   #transbordo 0.96
   def medioBoleto(self,colectivo,hora):
   	self.flagbondiprev=False
-  	self.hora=hora
+  	self.hora=datetime.strptime (hora, "%d/%m/%Y %H:%M")
   	if self.hora.time().hour >= 6 and self.hora.time().hour <= 0:
 	  	if self.busprev!=colectivo.linea and self.flagbondiprev==True and self.hora-self.horabusprev < timedelta(hour=1):
 		  if self.saldo >= 0.96:
