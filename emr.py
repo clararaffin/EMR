@@ -65,31 +65,31 @@ class Medio(Card):
   #normal 2.90
   #transbordo 0.96
   
-def medioBoleto(self,colectivo,hora):
-	self.flagbondiprev=False
-	self.hora=datetime.strptime (hora, "%d/%m/%Y %H:%M")
-	if self.hora.time().hour >= 6 and self.hora.time().hour <= 0:
-		if self.busprev!=colectivo.linea and self.flagbondiprev==True and self.hora-self.horabusprev < timedelta(hour=1):
-			if self.saldo >= 0.96:
-				self.saldo=self.saldo-0.96
-				self.busprev=0
-				self.horabusprev=0
-				self.flagbondiprev=False
-				self.ultimosviajes.viajecito(colectivo,self.hora,0.96)
-				self.historial.append(self.ultimosviajes)
-				self.ultimosviajes= Viajes()
-				return True
+	def medioBoleto(self,colectivo,hora):
+		self.flagbondiprev=False
+		self.hora=datetime.strptime (hora, "%d/%m/%Y %H:%M")
+		if self.hora.time().hour >= 6 and self.hora.time().hour <= 0:
+			if self.busprev!=colectivo.linea and self.flagbondiprev==True and self.hora-self.horabusprev < timedelta(hour=1):
+				if self.saldo >= 0.96:
+					self.saldo=self.saldo-0.96
+					self.busprev=0
+					self.horabusprev=0
+					self.flagbondiprev=False
+					self.ultimosviajes.viajecito(colectivo,self.hora,0.96)
+					self.historial.append(self.ultimosviajes)
+					self.ultimosviajes= Viajes()
+					return True
+			else:
+				if self.saldo >=2.9:
+					self.saldo=self.saldo-2.9
+					self.busprev=colectivo.linea
+					self.horabusprev=self.hora
+					self.ultimosviajes.viajecito(colectivo,self.hora,2.9)
+					self.historial.append(self.ultimosviajes)
+					self.ultimosviajes= Viajes()
+					return True
 		else:
-			if self.saldo >=2.9:
-				self.saldo=self.saldo-2.9
-				self.busprev=colectivo.linea
-				self.horabusprev=self.hora
-				self.ultimosviajes.viajecito(colectivo,self.hora,2.9)
-				self.historial.append(self.ultimosviajes)
-				self.ultimosviajes= Viajes()
-				return True
-	else:
-		self.boleto(colectivo,hora)
+			self.boleto(colectivo,hora)
 class Viajes:
   #datos del viaje
 	def __init__ (self):
