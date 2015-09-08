@@ -13,7 +13,8 @@ Existen dos tipos de tarjeta:
 TarjetaComun: Paga el boleto a 5.75 y el transbordo a 1.90
 TarjetaMedioBoleto: Paga el boleto a 2.90 y el transbordo a 0,96
 """
-#falta incluir el tema de la hora. Ver Stack Overflow.
+
+from datetime import timedelta, datetime
 
 class Colectivo:
   #datos del bondi
@@ -27,27 +28,38 @@ class Card:
 		self.saldo=0
 		self.busprev=0
 		self.horabusprev=0
-		self.flagbondiprev=False
 		self.ultimosviajes = Viajes()
 		self.historial=[]
 		
 	def boleto(self,colectivo,hora):
 		#normal 5.75
 		#transbordo 1.90
-		if self.saldo >= 1.9:
-		  	self.saldo=self.saldo-1.9
-		  	self.busprev=0
-		  	self.horabusprev=0
-		  	self.flagbondiprev=False
-		  	return True
-		if self.saldo >=5.75:
-		  	self.saldo=self.saldo-5.75
-		  	self.busprev=colectivo.linea
-		  	self.horabusprev=self.hora
-		  	return True
-		else:
-		  	return False
-	
+		self.flagbondiprev=False
+		self.hora=hora
+		if self.busprev!=colectivo.linea and self.flagbondiprev==True and self.hora-self.horabusprev < timedelta(hour=1):
+			if self.saldo >= 1.9:
+			  	self.saldo=self.saldo-1.9
+			  	self.busprev=0
+			  	self.horabusprev=0
+			  	self.flagbondiprev=False
+			  	self.ultimosviajes.viajecito(colectivo,self.hora,1.9)
+			  	self.hitorial.append(self.ultimosviajes)
+			  	self.ultimosviajes= Viajes()
+			  	return True
+		else:	  	
+			if self.saldo >=5.75:
+			  	self.saldo=self.saldo-5.75
+				if self.flagbondiprev==False:
+					self.flagbondiprev=True
+			  	self.busprev=colectivo.linea
+			  	self.horabusprev=self.hora
+			  	self.ultimosviajes.viajecito(colectivo,self.hora,5.75)
+			  	self.hitorial.append(self.ultimosviajes)
+			  	self.ultimosviajes= Viajes()
+			  	return True
+			else:
+			  	return False
+		
 	#recargar
 	def cargar(self,monto):
 		self.monto=monto
@@ -60,7 +72,7 @@ class Card:
 	#historial
 	def ViajesRealizados(self):
 		for historial in self.historial:
-		print(str(historial.linea)+"/t"+str(historial.empresa)+"/t"+str(historial.interno)+"/t"+str(historial.hora)+"/t"+str(historial.monto))
+			print(str(historial.linea)+"/t"+str(historial.empresa)+"/t"+str(historial.interno)+"/t"+str(historial.hora)+"/t"+str(historial.monto))
 	#saldo
 	def saldo(self):
 		return self.saldo
@@ -69,18 +81,30 @@ class Medio(Card):
   #normal 2.90
   #transbordo 0.96
   def medioBoleto(self,colectivo,hora):
-	  if self.saldo >= 0.96:
-		self.saldo=self.saldo-0.96
-		self.busprev=0
-		self.horabusprev=0
-		self.flagbondiprev=False
-		return True
-	  if self.saldo >=2.9:
-		self.saldo=self.saldo-2.9
-		self.busprev=colectivo.linea
-		self.horabusprev=self.hora
-		return True
-  
+  	self.flagbondiprev=False
+  	self.hora=hora
+  	if self.hora.time().hour >= 6 and self.hora.time().hour <= 0:
+	  	if self.busprev!=colectivo.linea and self.flagbondiprev==True and self.hora-self.horabusprev < timedelta(hour=1):
+		  if self.saldo >= 0.96:
+			self.saldo=self.saldo-0.96
+			self.busprev=0
+			self.horabusprev=0
+			self.flagbondiprev=False
+			self.ultimosviajes.viajecito(colectivo,self.hora,0.96)
+			self.hitorial.append(self.ultimosviajes)
+			self.ultimosviajes= Viajes()
+			return True
+		else:
+		  if self.saldo >=2.9:
+			self.saldo=self.saldo-2.9
+			self.busprev=colectivo.linea
+			self.horabusprev=self.hora
+			self.ultimosviajes.viajecito(colectivo,self.hora,2.9)
+			self.hitorial.append(self.ultimosviajes)
+			self.ultimosviajes= Viajes()
+			return True
+  	else:
+  		self.boleto(colectivo,hora)
 class Viajes:
   #datos del viaje
 	def __init__ (self):
@@ -96,4 +120,3 @@ class Viajes:
 		self.empresa=colectivo.empresa
 		self.linea=colectivo.linea
 		self.interno=colectivo.interno
-
