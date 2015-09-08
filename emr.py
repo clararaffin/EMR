@@ -66,6 +66,9 @@ class Medio(Card):
   #normal 2.90
   #transbordo 0.96
   
+  	def boleto(self,colectivo,hora):
+  		self.medioBoleto(self,colectivo,hora)
+  
 	def medioBoleto(self,colectivo,hora):
 		self.hora=datetime.strptime (hora, "%d/%m/%Y %H:%M")
 		if self.hora.time().hour >= 6 and self.hora.time().hour <= 0:
