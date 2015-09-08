@@ -16,6 +16,7 @@ class Card:
 		self.historial=[]
 		
 	def boleto(self,colectivo,hora):
+		
 		#normal 5.75
 		#transbordo 1.90
 		self.flagbondiprev=False
