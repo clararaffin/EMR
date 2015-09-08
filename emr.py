@@ -34,7 +34,8 @@ class Card:
 		else:	  	
 			if self.saldo >=5.75:
 				self.saldo=self.saldo-5.75
-				if (self.flagbondiprev == False): self.flagbondiprev = True
+				if self.flagbondiprev == False:
+					self.flagbondiprev = True
 				self.busprev=colectivo.linea
 				self.horabusprev=self.hora
 				self.ultimosviajes.viajecito(colectivo,self.hora,5.75)
@@ -81,6 +82,8 @@ class Medio(Card):
 			else:
 				if self.saldo >=2.9:
 					self.saldo=self.saldo-2.9
+					if self.flagbondiprev == False:
+						self.flagbondiprev = True
 					self.busprev=colectivo.linea
 					self.horabusprev=self.hora
 					self.ultimosviajes.viajecito(colectivo,self.hora,2.9)
