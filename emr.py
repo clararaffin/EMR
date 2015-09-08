@@ -27,7 +27,7 @@ class Card:
 		self.hora=datetime.strptime (hora, "%d/%m/%Y %H:%M")
 		if self.busprev!=colectivo.linea and self.flagbondiprev==True and self.hora-self.horabusprev < timedelta(minutes=60):
 			if self.saldo >= 1.9:
-			  	round(self.saldo=self.saldo-1.9,2)
+			  	self.saldo=round(self.saldo-1.9,2)
 			  	self.busprev=0
 			  	self.horabusprev=0
 			  	self.flagbondiprev=False
@@ -37,7 +37,7 @@ class Card:
 			  	return True
 		else:	  	
 			if self.saldo >=5.75:
-				round(self.saldo=self.saldo-5.75,2)
+				self.saldo=round(self.saldo-5.75,2)
 				if self.flagbondiprev == False:
 					self.flagbondiprev = True
 				self.busprev=colectivo.linea
@@ -75,7 +75,7 @@ class Medio(Card):
 		else:
 			if self.busprev!=colectivo.linea and self.flagbondiprev==True and self.hora-self.horabusprev < timedelta(minutes=60):
 				if self.saldo >= 0.96:
-					round(self.saldo=self.saldo-0.96,2)
+					self.saldo=round(self.saldo-0.96,2)
 					self.busprev=0
 					self.horabusprev=0
 					self.flagbondiprev=False
@@ -85,7 +85,7 @@ class Medio(Card):
 					return True
 			else:
 				if self.saldo >=2.9:
-					round(self.saldo=self.saldo-2.9,2)
+					self.saldo=round(self.saldo-2.9,2)
 					if self.flagbondiprev == False:
 						self.flagbondiprev = True
 					self.busprev=colectivo.linea
