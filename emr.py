@@ -70,7 +70,7 @@ class Medio(Card):
   
 	def boleto(self,colectivo,hora):
 		self.hora=datetime.strptime (hora, "%d/%m/%Y %H:%M")
-		if self.hora.time().hour < 6 and self.hora.time().hour > 0:
+		if self.hora.time().hour <= 6 and self.hora.time().hour >= 0:
 			self.auxboleto(colectivo,hora)
 		else:
 			if self.busprev!=colectivo.linea and self.flagbondiprev==True and self.hora-self.horabusprev < timedelta(minutes=60):
