@@ -93,7 +93,7 @@ class Medio(Card):
 					self.ultimosviajes= Viajes()
 					return True
 		else:
-			self.auxboleto(colectivo,hora)
+			self.boleto(colectivo,hora)
 class Viajes:
   #datos del viaje
 	def __init__ (self):
