@@ -63,6 +63,7 @@ class Card:
 class Medio(Card):
   #normal 2.90
   #transbordo 0.96
+  
   def medioBoleto(self,colectivo,hora):
   	self.flagbondiprev=False
   	self.hora=datetime.strptime (hora, "%d/%m/%Y %H:%M")
