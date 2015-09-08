@@ -64,7 +64,7 @@ class Card:
 
 class Medio(Card):
 	def boleto(self,colectivo,hora):
-		self.medioBoleto(self,colectivo,hora)
+		self.medioBoleto(colectivo,hora)
   
 	def medioBoleto(self,colectivo,hora):
 		self.hora=datetime.strptime (hora, "%d/%m/%Y %H:%M")
