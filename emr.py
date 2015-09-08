@@ -16,7 +16,11 @@ class Card:
 		self.ultimosviajes = Viajes()
 		self.historial=[]
 		
+		
 	def boleto(self,colectivo,hora):
+		self.auxboleto(colectivo,hora)
+		
+	def auxboleto(self,colectivo,hora):
 		
 		#normal 5.75
 		#transbordo 1.90
@@ -63,10 +67,8 @@ class Card:
 		return self.saldo
 
 class Medio(Card):
-	def boleto(self,colectivo,hora):
-		self.medioBoleto(colectivo,hora)
   
-	def medioBoleto(self,colectivo,hora):
+	def boleto(self,colectivo,hora):
 		self.hora=datetime.strptime (hora, "%d/%m/%Y %H:%M")
 		if self.hora.time().hour >= 6 and self.hora.time().hour <= 0:
 			if self.busprev!=colectivo.linea and self.flagbondiprev==True and self.hora-self.horabusprev < timedelta(minutes=60):
@@ -91,7 +93,7 @@ class Medio(Card):
 					self.ultimosviajes= Viajes()
 					return True
 		else:
-			self.boleto(colectivo,hora)
+			self.auxboleto(colectivo,hora)
 class Viajes:
   #datos del viaje
 	def __init__ (self):
