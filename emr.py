@@ -13,6 +13,7 @@ Existen dos tipos de tarjeta:
 TarjetaComun: Paga el boleto a 5.75 y el transbordo a 1.90
 TarjetaMedioBoleto: Paga el boleto a 2.90 y el transbordo a 0,96
 """
+#falta incluir el tema de la hora. Ver Stack Overflow.
 
 class Colectivo:
   #datos del bondi
@@ -28,6 +29,7 @@ class Card:
 		self.horabusprev=0
 		self.flagbondiprev=False
 		self.ultimosviajes = Viajes()
+		self.historial=[]
 		
 	def boleto(self,colectivo,hora):
 		#normal 5.75
@@ -56,6 +58,9 @@ class Card:
 		else:
 			self.saldo=self.saldo+self.monto
 	#historial
+	def ViajesRealizados(self):
+		for historial in self.historial:
+		print(str(historial.linea)+"/t"+str(historial.empresa)+"/t"+str(historial.interno)+"/t"+str(historial.hora)+"/t"+str(historial.monto))
 	#saldo
 	def saldo(self):
 		return self.saldo
