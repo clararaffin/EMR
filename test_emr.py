@@ -18,4 +18,4 @@ def test_boleto():
   assert Medio.getSaldo() == 456.14
   Medio.boleto(N142,"08/09/2015 02:30")
   Medio.boleto(N116,"08/09/2015 02:50")
-  assert Medio.getSaldo() == 448.39
+  assert Medio.getSaldo() == 448.49
