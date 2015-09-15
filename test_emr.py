@@ -42,7 +42,7 @@ def test_normalSinsaldo():
   assert Tarjeta2.getSaldo() == 5
 
 def test_medioSinsaldo():
-  Medio2 = Medio()
-  Medio2.cargar(2)
-  assert Medio2.auxboleto(N142,"08/09/2015 15:30") == False
-  assert Medio2.getSaldo() == 2
+  Half2 = Medio()
+  Half2.cargar(2)
+  assert Half2.auxboleto(N142,"08/09/2015 15:30") == False
+  assert Half2.getSaldo() == 2
