@@ -38,7 +38,7 @@ def test_medioOff():
 def test_normalSinsaldo():
   Tarjeta2 = Card()
   Tarjeta2.cargar(5)
-  assert Tarjeta2.boleto(N142,"08/09/2015 15:30") == False
+  assert Tarjeta2.auxboleto(N142,"08/09/2015 15:30") == False
   assert Tarjeta2.getSaldo() == 5
 
 
