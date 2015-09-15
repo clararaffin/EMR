@@ -9,6 +9,8 @@ Medio=Medio()
 def test_cargarNormal():
   Tarjeta.cargar(196)
   assert Tarjeta.getSaldo() == 230
+
+def test_cargarNegativo():
   Tarjeta.cargar(-1)
   assert Tarjeta.getSaldo() == "No se puede cargar un monto negativo"
   
