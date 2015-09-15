@@ -2,13 +2,20 @@ from emr import *
 
 N142=Colectivo("Rosario Bus",142,3)
 N116=Colectivo("Semtur",116,1)
+
 Tarjeta=Card()
 Medio=Medio()
-def test_cargar():
+
+def test_cargarNormal():
   Tarjeta.cargar(196)
-  assert (Tarjeta.getSaldo() == 230)
+  assert Tarjeta.getSaldo() == 230
+  Tarjeta.cargar(-1)
+  assert Tarjeta.getSaldo() == "No se puede cargar un monto negativo"
+  
+def test_cargarMedio():
   Medio.cargar(368)
-  assert (Medio.getSaldo() == 460)
+  assert Medio.getSaldo() == 460
+
 def test_boleto():
   Tarjeta.boleto(N142,"08/09/2015 00:45")
   Tarjeta.boleto(N116,"08/09/2015 00:55")
