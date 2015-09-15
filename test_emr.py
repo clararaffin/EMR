@@ -34,3 +34,11 @@ def test_medioOff():
   Medio.boleto(N142,"08/09/2015 02:30")
   Medio.boleto(N116,"08/09/2015 02:50")
   assert Medio.getSaldo() == 448.49
+
+def test_normalSinsaldo():
+  Tarjeta2 = Card()
+  Tarjeta2.cargar(5)
+  assert Tarjeta2.boleto(N142,"08/09/2015 15:30") == False
+  assert Tarjeta2.getSaldo() == 5
+
+
