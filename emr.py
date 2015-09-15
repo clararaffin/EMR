@@ -52,12 +52,15 @@ class Card:
 	#recargar
 	def cargar(self,monto):
 		self.monto=monto
-		if self.monto==196:
-			self.saldo=self.saldo+230
-		elif self.monto==368:
-			self.saldo=self.saldo+460
+		if self.monto >= 0:
+			if self.monto==196:
+				self.saldo=self.saldo+230
+			elif self.monto==368:
+				self.saldo=self.saldo+460
+			else:
+				self.saldo=self.saldo+self.monto
 		else:
-			self.saldo=self.saldo+self.monto
+			return "No se puede cargar un monto negativo"
 	#historial
 	def ViajesRealizados(self):
 		for historial in self.historial:
