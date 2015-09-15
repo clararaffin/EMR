@@ -50,8 +50,8 @@ def test_medioSinsaldo():
 def test_listaViajesNormal():
   Tarjeta3 = Card()
   Tarjeta3.cargar(100)
-  Tarjeta3.auxboleto(N116, "08/09/2015 15:30")
-  Tarjeta3.auxboleto(N142, "08/09/2015 15:40")
+  Tarjeta3.boleto(N116, "08/09/2015 15:30")
+  Tarjeta3.boleto(N142, "08/09/2015 15:40")
   viajes = Tarjeta3.historial
   
   #assert viajes[0].hora == "08/09/2015 15:30"
@@ -68,17 +68,17 @@ def test_listaViajesNormal():
 def test_listaViajesMedio():
   Half3 = Medio()
   Half3.cargar(100)
-  Half3.auxboleto(N116, "08/09/2015 15:30")
-  Half3.auxboleto(N142, "08/09/2015 15:40")
-  viajes = Half3.historial
+  Half3.boleto(N116, "08/09/2015 15:30")
+  Half3.boleto(N142, "08/09/2015 15:40")
+  viajes_ = Half3.historial
   
-  #assert viajes[0].hora == "08/09/2015 15:30"
-  assert viajes[0].monto == 2.9
-  assert viajes[0].empresa == "Semtur"
-  assert viajes[0].linea == 116
-  assert viajes[0].interno == 1
-  #assert viajes[1].hora == "08/09/2015 15:40"
-  assert viajes[1].monto == 0.96
-  assert viajes[1].empresa == "Rosario Bus"
-  assert viajes[1].linea == 142
-  assert viajes[1].interno == 3
+  #assert viajes_[0].hora == "08/09/2015 15:30"
+  assert viajes_[0].monto == 2.9
+  assert viajes_[0].empresa == "Semtur"
+  assert viajes_[0].linea == 116
+  assert viajes_[0].interno == 1
+  #assert viajes_[1].hora == "08/09/2015 15:40"
+  assert viajes_[1].monto == 0.96
+  assert viajes_[1].empresa == "Rosario Bus"
+  assert viajes_[1].linea == 142
+  assert viajes_[1].interno == 3
